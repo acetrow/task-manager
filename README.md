@@ -1,16 +1,38 @@
-# React + Vite
+# Task Manager
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A lightweight task manager built with React and Vite. Add, edit, complete, and delete tasks with filtering and local storage persistence so your list stays in sync across sessions.
 
-Currently, two official plugins are available:
+- Live demo: https://task-manager-silk-omega-35.vercel.app
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+- Create new tasks and edit existing ones inline
+- Mark tasks complete/incomplete and delete tasks you no longer need
+- Filter by all, active, or completed tasks
+- Persists tasks to `localStorage` so they survive page reloads
 
-## React Compiler
+## Tech Stack
+- React + Vite
+- CSS for styling
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Getting Started
+1) Install dependencies
+```bash
+npm install
+```
+2) Run the dev server
+```bash
+npm run dev
+```
+3) Build for production
+```bash
+npm run build
+```
+4) Preview the production build
+```bash
+npm run preview
+```
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Project Scripts
+- `npm run dev` — start the Vite dev server
+- `npm run build` — build the production bundle
+- `npm run preview` — preview the production build locally
