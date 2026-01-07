@@ -1,7 +1,7 @@
 import './TaskList.css'
 import TaskItem from './TaskItem'
 
-function TaskList({ tasks, onDeleteTask, onToggleTask }) {
+function TaskList({ tasks, onDeleteTask, onToggleTask, onEditTask }) {
   return (
     <div className="task-list-container">
       <h2 className="task-list-title">My Tasks</h2>
@@ -15,6 +15,7 @@ function TaskList({ tasks, onDeleteTask, onToggleTask }) {
               task={task}
               onDelete={() => onDeleteTask(task.id)}
               onToggle={() => onToggleTask(task.id)}
+              onEdit={(text) => onEditTask(task.id, text)}
             />
           ))}
         </ul>

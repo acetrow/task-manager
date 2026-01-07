@@ -2,13 +2,18 @@ import { useEffect, useState } from 'react'
 import './App.css'
 import TaskList from './components/TaskList'
 
-// Starting data for Phase 2 (will live in React state)
+
 const initialTasks = [
   { id: 1, text: 'Learn React', completed: true },
   { id: 2, text: 'Build Task Manager', completed: false }
 ]
 
 const STORAGE_KEY = 'task-manager-tasks'
+const FILTERS = {
+  all: 'All',
+  active: 'Active',
+  completed: 'Completed'
+}
 
 function App() {
   const [tasks, setTasks] = useState(() => {
@@ -23,6 +28,7 @@ function App() {
     return initialTasks
   })
   const [newTaskText, setNewTaskText] = useState('')
+  const [filter, setFilter] = useState('all')
 
   useEffect(() => {
     try {
@@ -59,6 +65,20 @@ function App() {
     )
   }
 
+  const handleEditTask = (id, newText) => {
+    const trimmed = newText.trim()
+    if (!trimmed) return
+    setTasks((prev) =>
+      prev.map((task) => (task.id === id ? { ...task, text: trimmed } : task))
+    )
+  }
+
+  const filteredTasks = tasks.filter((task) => {
+    if (filter === 'active') return !task.completed
+    if (filter === 'completed') return task.completed
+    return true
+  })
+
   return (
     <div className="app">
       <h1>Task Manager</h1>
@@ -74,10 +94,25 @@ function App() {
         <button type="submit">Add</button>
       </form>
 
+      <div className="filter-bar">
+        {Object.entries(FILTERS).map(([key, label]) => (
+          <button
+            key={key}
+            type="button"
+            className={`filter-button ${filter === key ? 'active' : ''}`}
+            onClick={() => setFilter(key)}
+            aria-pressed={filter === key}
+          >
+            {label}
+          </button>
+        ))}
+      </div>
+
       <TaskList
-        tasks={tasks}
+        tasks={filteredTasks}
         onDeleteTask={handleDeleteTask}
         onToggleTask={handleToggleTask}
+        onEditTask={handleEditTask}
       />
     </div>
   )

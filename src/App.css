@@ -30,6 +30,26 @@
   color: rgba(255, 255, 255, 0.87);
 }
 
+.filter-bar {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.filter-button {
+  padding: 0.4rem 0.85rem;
+  border: 1px solid #3a3a3a;
+  background-color: #1f1f1f;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.filter-button.active {
+  border-color: #646cff;
+  color: #ffffff;
+  background-color: #2f2f44;
+}
+
 @media (prefers-color-scheme: light) {
   .app h1 {
     color: #213547;
@@ -43,5 +63,17 @@
 
   .task-input::placeholder {
     color: #aaa;
+  }
+
+  .filter-button {
+    background-color: #ffffff;
+    border-color: #e0e0e0;
+    color: #213547;
+  }
+
+  .filter-button.active {
+    background-color: #e8e8ff;
+    border-color: #646cff;
+    color: #213547;
   }
 }
