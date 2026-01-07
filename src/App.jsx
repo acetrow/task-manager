@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import './App.css'
 import TaskList from './components/TaskList'
 
@@ -8,9 +8,29 @@ const initialTasks = [
   { id: 2, text: 'Build Task Manager', completed: false }
 ]
 
+const STORAGE_KEY = 'task-manager-tasks'
+
 function App() {
-  const [tasks, setTasks] = useState(initialTasks)
+  const [tasks, setTasks] = useState(() => {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY)
+      if (stored) {
+        return JSON.parse(stored)
+      }
+    } catch (err) {
+      console.error('Failed to load tasks from storage', err)
+    }
+    return initialTasks
+  })
   const [newTaskText, setNewTaskText] = useState('')
+
+  useEffect(() => {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks))
+    } catch (err) {
+      console.error('Failed to save tasks to storage', err)
+    }
+  }, [tasks])
 
   const handleAddTask = (event) => {
     event.preventDefault()
