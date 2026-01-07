@@ -1,7 +1,7 @@
 import './TaskList.css'
 import TaskItem from './TaskItem'
 
-function TaskList({ tasks }) {
+function TaskList({ tasks, onDeleteTask, onToggleTask }) {
   return (
     <div className="task-list-container">
       <h2 className="task-list-title">My Tasks</h2>
@@ -10,7 +10,12 @@ function TaskList({ tasks }) {
       ) : (
         <ul className="task-list">
           {tasks.map((task) => (
-            <TaskItem key={task.id} task={task} />
+            <TaskItem
+              key={task.id}
+              task={task}
+              onDelete={() => onDeleteTask(task.id)}
+              onToggle={() => onToggleTask(task.id)}
+            />
           ))}
         </ul>
       )}

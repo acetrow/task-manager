@@ -1,10 +1,27 @@
 import './TaskItem.css'
 
-function TaskItem({ task }) {
+function TaskItem({ task, onDelete, onToggle }) {
   return (
     <li className={`task-item ${task.completed ? 'completed' : ''}`}>
-      <span className="task-text">{task.text}</span>
-      {task.completed && <span className="task-status">✓</span>}
+      <button
+        type="button"
+        className="task-toggle-button"
+        onClick={onToggle}
+        aria-label={task.completed ? 'Mark as incomplete' : 'Mark as complete'}
+      >
+        {task.completed ? '✓' : ''}
+      </button>
+      <span className="task-text" onClick={onToggle}>
+        {task.text}
+      </span>
+      <button
+        type="button"
+        className="task-delete-button"
+        onClick={onDelete}
+        aria-label="Delete task"
+      >
+        ✕
+      </button>
     </li>
   )
 }

@@ -3,6 +3,27 @@
   padding: 2rem;
 }
 
+.task-form {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 600px;
+  margin: 0 auto 2rem;
+}
+
+.task-input {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid #3a3a3a;
+  background-color: #1a1a1a;
+  color: rgba(255, 255, 255, 0.87);
+  font-size: 1rem;
+}
+
+.task-input::placeholder {
+  color: #777;
+}
+
 .app h1 {
   text-align: center;
   margin-bottom: 2rem;
@@ -12,5 +33,15 @@
 @media (prefers-color-scheme: light) {
   .app h1 {
     color: #213547;
+  }
+
+  .task-input {
+    background-color: #ffffff;
+    border-color: #e0e0e0;
+    color: #213547;
+  }
+
+  .task-input::placeholder {
+    color: #aaa;
   }
 }
