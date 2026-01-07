@@ -2,7 +2,7 @@
 
 A lightweight task manager built with React and Vite. Add, edit, complete, and delete tasks with filtering and local storage persistence so your list stays in sync across sessions.
 
-- Live demo: [https://task-manager-silk-omega-35.vercel.app](https://task-manager-ofm4x5rff-zulhanifs-projects.vercel.app)
+- Live demo: (https://task-manager-ofm4x5rff-zulhanifs-projects.vercel.app)
 
 ## Features
 - Create new tasks and edit existing ones inline
